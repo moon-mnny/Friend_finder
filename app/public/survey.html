@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>Friend Finder</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Survey Questions</h1>
+        <form>
+          <h3>About You</h3>
+          <div class="form-group">
+            <label for="name">Name (Required)</label>
+            <input type="text" class="form-control" id="name" placeholder="" />
+          </div>
+          <div class="form-group">
+            <label for="photo">Link to Photo Image (Required)</label>
+            <input type="text" class="form-control" id="photo" placeholder="" />
+          </div>
+          <h3>Questions</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+                <th scope="col">5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Disagree strongly</td>
+                <td>Disagree a little</td>
+                <td>Neutral: No opinion</td>
+                <td>Agree a little</td>
+                <td>Agree strongly</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-group">
+            <label for="Q1">Q1. Is outgoing, sociable.</label>
+            <select class="form-control" id="Q1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q2">Q2. Is compassionate, has a soft heart.</label>
+            <select class="form-control" id="Q2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q3">Q3. Tends to be disorganized.</label>
+            <select class="form-control" id="Q3">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q4">Q4. Is relaxed, handles stress well.</label>
+            <select class="form-control" id="Q4">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q5">Q5. Has few artistic interests.</label>
+            <select class="form-control" id="Q5">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q6">Q6. Has an assertive personality.</label>
+            <select class="form-control" id="Q6">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q7"
+              >Q7. Is respectful, treats others with respect.</label
+            >
+            <select class="form-control" id="Q7">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q8">Q8. Tends to be lazy.</label>
+            <select class="form-control" id="Q8">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q9"
+              >Q9. Stays optimistic after experiencing a setback.</label
+            >
+            <select class="form-control" id="Q9">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Q10"
+              >Q10. Is curious about many different things.</label
+            >
+            <select class="form-control" id="Q10">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5 </option>
+            </select>
+          </div>
+          <button id="sumbit-btn" type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>
+          <a href="/api/friends">API Friends List</a> |
+          <a href="https://github.com/moon-mnny/Friend_finder">GitHub Repo</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      $("#sumbit-btn").on("click", function(event) {
+        event.preventDefault();
+        var newFriend = {
+          name: $("#name")
+            .val()
+            .trim(),
+          photo: $("#photo")
+            .val()
+            .trim(),
+          scores: [
+            $("#Q1").val(),
+            $("#Q2").val(),
+            $("#Q3").val(),
+            $("#Q4").val(),
+            $("#Q5").val(),
+            $("#Q6").val(),
+            $("#Q7").val(),
+            $("#Q8").val(),
+            $("#Q9").val(),
+            $("#Q10").val()
+          ]
+        };
+
+        // Question: What does this code do??
+        $.post("/api/friends", newFriend, function(data) {
+          console.log("add friend", data);
+          alert("Calculating your best friend");
+        });
+      });
+    </script>
+  </body>
+</html>
